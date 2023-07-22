@@ -212,3 +212,9 @@ hr {
 }
 
 /* Rest of your CSS styles */
+
+/* Define the initial styles for the input elements */
+.initial-style {
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}

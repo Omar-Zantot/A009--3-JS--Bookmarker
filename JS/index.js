@@ -45,6 +45,9 @@ function createSite() {
     siteList.push(site);
     localStorage.setItem("sites", JSON.stringify(siteList));
     display(siteList);
+    Reset();
+     
+  
   } else {
     // Show the error message container
     var errorMessageContainer = document.querySelector(
@@ -59,6 +62,44 @@ function createSite() {
 }
 
 // |================= {End Create function} =================|
+
+function Reset() {
+  siteName.value = "";
+  siteUrl.value = "";
+
+  // Reset error message container
+  var errorMessageContainer = document.querySelector(".error-message-container");
+  errorMessageContainer.classList.add("d-none");
+
+  // Reset input styles by reapplying the "initial-style" class
+  var siteNameInput = document.querySelector(".siteName-input");
+  var siteUrlInput = document.querySelector(".siteUrl-input");
+
+  siteNameInput.classList.add("initial-style");
+  siteUrlInput.classList.add("initial-style");
+
+   // Hide the icons by setting their display to none
+   var exIcons = document.querySelectorAll(".ex");
+   var chIcons = document.querySelectorAll(".ch");
+ 
+   exIcons.forEach(function (icon) {
+     icon.style.display = "none";
+   });
+ 
+   chIcons.forEach(function (icon) {
+     icon.style.display = "none";
+   });
+
+   reloadPage();
+}
+
+
+function reloadPage() {
+  location.reload();
+}
+
+
+
 
 // ^ |================= {display function} =================|
 
