@@ -112,7 +112,7 @@ function display(arr) {
         <td>${i + 1}</td>
         <td>${arr[i].name}</td>
         <td>
-          <a class="btn btn-primary" href="${arr[i].url} " onclick="visitSite();" target="_blank">
+          <a class="btn btn-primary" href="${arr[i].url}"  target="_blank">
             <i class="fa-solid fa-eye"></i>Visit
           </a>
         </td>
@@ -123,6 +123,7 @@ function display(arr) {
   document.getElementById("tableBody").innerHTML = trs;
 }
 function visitSite(){
+  alert("Visit Site");
   var siteLink = `${siteUrl.value}`;
   location.href = siteLink;
   localStorage.setItem('site' , JSON.stringify(siteList))
@@ -148,7 +149,8 @@ function siteNameValidation() {
 }
 
 function siteUrlValidation() {
-  var regex = /^[a-z]{1,}\.[a-z]{2,}$/g;
+  // var regex = /^[a-z]{1,}\.[a-z]{2,}$/g;
+  var regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
   return regex.test(siteUrl.value) && siteUrl.value != null;
 }
 //  |=================| {End Site Name Validation} |=================|
