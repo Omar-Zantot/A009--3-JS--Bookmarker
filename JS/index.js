@@ -112,7 +112,7 @@ function display(arr) {
         <td>${i + 1}</td>
         <td>${arr[i].name}</td>
         <td>
-          <a class="btn btn-primary" href="${arr[i].url}" target="_blank">
+          <a class="btn btn-primary" href="${arr[i].url} " onclick="visitSite();" target="_blank">
             <i class="fa-solid fa-eye"></i>Visit
           </a>
         </td>
@@ -121,6 +121,11 @@ function display(arr) {
         `;
   }
   document.getElementById("tableBody").innerHTML = trs;
+}
+function visitSite(){
+  var siteLink = `${siteUrl.value}`;
+  location.href = siteLink;
+  localStorage.setItem('site' , JSON.stringify(siteList))
 }
 
 //  |================= {End display function} =================|
