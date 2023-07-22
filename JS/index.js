@@ -46,8 +46,6 @@ function createSite() {
     localStorage.setItem("sites", JSON.stringify(siteList));
     display(siteList);
     Reset();
-     
-  
   } else {
     // Show the error message container
     var errorMessageContainer = document.querySelector(
@@ -55,7 +53,8 @@ function createSite() {
     );
     errorMessageContainer.classList.remove("d-none");
     var p = document.querySelector(".errorM");
-    p.innerHTML = "Site Name or Url is not valid, Please follow the rules below :";
+    p.innerHTML =
+      "Site Name or Url is not valid, Please follow the rules below :";
     var errorRules = document.getElementById("errorRules");
     errorRules.classList.remove("d-none");
   }
@@ -63,12 +62,16 @@ function createSite() {
 
 // |================= {End Create function} =================|
 
+// ^ |================= {Reset function} =================|
+
 function Reset() {
   siteName.value = "";
   siteUrl.value = "";
 
   // Reset error message container
-  var errorMessageContainer = document.querySelector(".error-message-container");
+  var errorMessageContainer = document.querySelector(
+    ".error-message-container"
+  );
   errorMessageContainer.classList.add("d-none");
 
   // Reset input styles by reapplying the "initial-style" class
@@ -78,29 +81,26 @@ function Reset() {
   siteNameInput.classList.add("initial-style");
   siteUrlInput.classList.add("initial-style");
 
-   // Hide the icons by setting their display to none
-   var exIcons = document.querySelectorAll(".ex");
-   var chIcons = document.querySelectorAll(".ch");
- 
-   exIcons.forEach(function (icon) {
-     icon.style.display = "none";
-   });
- 
-   chIcons.forEach(function (icon) {
-     icon.style.display = "none";
-   });
+  // Hide the icons by setting their display to none
+  var exIcons = document.querySelectorAll(".ex");
+  var chIcons = document.querySelectorAll(".ch");
 
-   reloadPage();
+  exIcons.forEach(function (icon) {
+    icon.style.display = "none";
+  });
+
+  chIcons.forEach(function (icon) {
+    icon.style.display = "none";
+  });
+
+  reloadPage();
 }
-// this
-
 
 function reloadPage() {
   location.reload();
 }
 
-
-
+//  |================= {End Reset function} =================|
 
 // ^ |================= {display function} =================|
 
@@ -144,7 +144,8 @@ function siteNameValidation() {
 
 function siteUrlValidation() {
   // var regex = /^[a-z]{1,}\.[a-z]{2,}$/g;
-  var regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+  var regex =
+    /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   return regex.test(siteUrl.value) && siteUrl.value != null;
 }
 //  |=================| {End Site Name Validation} |=================|
@@ -166,17 +167,14 @@ function handleSiteNameValidation() {
   var isSiteNameValid = siteNameValidation();
   changeIconStyle(isSiteNameValid, ".siteName");
   changeInputStyle(".siteName-input", ".siteName", isSiteNameValid);
-  // Show/hide error message container based on validation results
-  // errorMessageContainer.style.display = isSiteNameValid ? "d-none" : "d-block";
 }
 
 function handleSiteUrlValidation() {
   var isSiteUrlValid = siteUrlValidation();
   changeIconStyle(isSiteUrlValid, ".siteUrl");
   changeInputStyle(".siteUrl-input", ".siteUrl", isSiteUrlValid);
-  // errorMessageContainer.style.display = isSiteUrlValid ? "none" : "block";
 }
-
+// & =================>{helper} 
 function changeIconStyle(isValid, inputClass) {
   // Show/hide SVG icon based on validation result for siteUrl or siteName
   var exIcon = document.querySelector(`${inputClass} .ex`);
@@ -202,6 +200,8 @@ function changeInputStyle(wnatedInputClass, containerNameClass, isvalid) {
 
 //  |================= {End Input Validation and Styling} =================|
 
+//  ?|================= { Erorr Message Box } =================|
+
 function hideErrorMessage() {
   var errorMessageContainer = document.querySelector(
     ".error-message-container"
@@ -212,3 +212,5 @@ function hideErrorMessage() {
 // Add event listener to the close button
 var closeBtn = document.getElementById("closeBtn");
 closeBtn.addEventListener("click", hideErrorMessage);
+
+//  |================= { Erorr Message Box } =================|
