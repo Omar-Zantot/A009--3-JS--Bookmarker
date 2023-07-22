@@ -122,12 +122,6 @@ function display(arr) {
   }
   document.getElementById("tableBody").innerHTML = trs;
 }
-function visitSite(){
-  alert("Visit Site");
-  var siteLink = `${siteUrl.value}`;
-  location.href = siteLink;
-  localStorage.setItem('site' , JSON.stringify(siteList))
-}
 
 //  |================= {End display function} =================|
 
