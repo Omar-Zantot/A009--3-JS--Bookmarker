@@ -28,7 +28,12 @@ function createSite() {
   });
 
   if (isDuplicateSite) {
-    alert("This site already exists in the list.");
+    var errorMessageContainer = document.querySelector(
+      ".error-message-container"
+    );
+    errorMessageContainer.classList.remove("d-none");
+    var p = document.querySelector(".errorM");
+    p.innerHTML = "This site already exists in the list.";
     return;
   }
 
@@ -46,6 +51,10 @@ function createSite() {
       ".error-message-container"
     );
     errorMessageContainer.classList.remove("d-none");
+    var p = document.querySelector(".errorM");
+    p.innerHTML = "Site Name or Url is not valid, Please follow the rules below :";
+    var errorRules = document.getElementById("errorRules");
+    errorRules.classList.remove("d-none");
   }
 }
 
